@@ -1,0 +1,26 @@
+<h1>Tag an image</h1>
+
+<%= form_tag "/", method: "get" do %>
+  <%= label_tag(:image_url, "Image URL:") %>
+  <%= text_field_tag(:image_url) %>
+  <%= submit_tag("Tag it!") %>
+<% end %>
+
+<br />
+
+<% # Display the image that was given %>
+<div class="image_wrapper">
+  <% if @image_url %>
+    <%= image_tag @image_url%>
+  <% end %>
+</div>
+
+<%#
+Loop over the list that of words
+and display them in their own list item
+%>
+<ol class="tags_list">
+  <% @tags.each do |tag| %>
+    <li><%= tag %></li>
+  <% end %>
+</ol>
